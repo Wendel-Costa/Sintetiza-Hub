@@ -11,8 +11,8 @@ const PORT = Number(process.env.PORT) || 3000;
 const MAX_TEXT_LENGTH = 10000;
 const MAX_BODY_SIZE = 64 * 1024;
 
-const MAX_REQUESTS_PER_IP = 5;
-const MAX_REQUESTS_PER_DAY = 30;
+const MAX_REQUESTS_PER_IP = 20;
+const MAX_REQUESTS_PER_DAY = 100;
 
 const HOUR_IN_MS = 60 * 60 * 1000;
 const DATA_DIRECTORY = path.join(__dirname, "data");

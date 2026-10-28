@@ -1,36 +1,28 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta
-        name="description"
-        content="Sintetiza Hub: resumos personalizados com inteligência artificial."
-    >
+    <meta name="description" content="Sintetiza Hub: resumos personalizados com inteligência artificial.">
 
     <title>Sintetiza Hub</title>
 
     <link rel="stylesheet" href="css/styles.css">
     <script type="module" src="js/app.js"></script>
 </head>
+
 <body>
 
     <header class="site-header">
         <a href="index.html" class="brand" aria-label="Sintetiza Hub - início">
             <span class="brand-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" fill="none">
-                    <path
-                        d="M12 2.8L14.1 9.9L21.2 12L14.1 14.1L12 21.2L9.9 14.1L2.8 12L9.9 9.9L12 2.8Z"
-                        stroke="currentColor"
-                        stroke-width="1.6"
-                        stroke-linejoin="round"
-                    />
-                    <path
-                        d="M19 15.5L19.8 18.2L22.5 19L19.8 19.8L19 22.5L18.2 19.8L15.5 19L18.2 18.2L19 15.5Z"
-                        fill="currentColor"
-                    />
+                    <path d="M12 2.8L14.1 9.9L21.2 12L14.1 14.1L12 21.2L9.9 14.1L2.8 12L9.9 9.9L12 2.8Z"
+                        stroke="currentColor" stroke-width="1.6" stroke-linejoin="round" />
+                    <path d="M19 15.5L19.8 18.2L22.5 19L19.8 19.8L19 22.5L18.2 19.8L15.5 19L18.2 18.2L19 15.5Z"
+                        fill="currentColor" />
                 </svg>
             </span>
 
@@ -58,14 +50,8 @@
                             Texto que deseja resumir
                         </label>
 
-                        <textarea
-                            id="source-text"
-                            name="source-text"
-                            rows="10"
-                            maxlength="10000"
-                            placeholder="Cole ou digite seu texto aqui..."
-                            aria-invalid="false"
-                        ></textarea>
+                        <textarea id="source-text" name="source-text" rows="10" maxlength="10000"
+                            placeholder="Cole ou digite seu texto aqui..." aria-invalid="false"></textarea>
                     </div>
 
                     <div class="field-footer">
@@ -82,30 +68,17 @@
                             <div class="choice-grid">
 
                                 <label class="choice-card">
-                                    <input
-                                        type="radio"
-                                        name="summary-length"
-                                        value="short"
-                                    >
+                                    <input type="radio" name="summary-length" value="short">
                                     <span class="choice-content">Curto</span>
                                 </label>
 
                                 <label class="choice-card">
-                                    <input
-                                        type="radio"
-                                        name="summary-length"
-                                        value="medium"
-                                        checked
-                                    >
+                                    <input type="radio" name="summary-length" value="medium" checked>
                                     <span class="choice-content">Médio</span>
                                 </label>
 
                                 <label class="choice-card">
-                                    <input
-                                        type="radio"
-                                        name="summary-length"
-                                        value="long"
-                                    >
+                                    <input type="radio" name="summary-length" value="long">
                                     <span class="choice-content">Detalhado</span>
                                 </label>
 
@@ -118,21 +91,12 @@
                             <div class="format-options">
 
                                 <label class="format-option">
-                                    <input
-                                        type="radio"
-                                        name="summary-format"
-                                        value="paragraph"
-                                        checked
-                                    >
+                                    <input type="radio" name="summary-format" value="paragraph" checked>
                                     <span class="format-content">Texto corrido</span>
                                 </label>
 
                                 <label class="format-option">
-                                    <input
-                                        type="radio"
-                                        name="summary-format"
-                                        value="topics"
-                                    >
+                                    <input type="radio" name="summary-format" value="topics">
                                     <span class="format-content">Tópicos</span>
                                 </label>
 
@@ -146,12 +110,7 @@
                         <span aria-hidden="true">→</span>
                     </button>
 
-                    <p
-                        id="status-message"
-                        class="status-message"
-                        role="status"
-                        aria-live="polite"
-                    ></p>
+                    <p id="status-message" class="status-message" role="status" aria-live="polite"></p>
 
                 </form>
 
@@ -169,11 +128,7 @@
                     <p>O resumo aparecerá aqui.</p>
                 </div>
 
-                <p
-                    id="summary-text"
-                    class="summary-text"
-                    hidden
-                ></p>
+                <div id="summary-text" class="summary-text" hidden></div>
 
             </section>
 
@@ -182,14 +137,11 @@
     </main>
 
     <footer class="site-footer">
-        <a
-            href="https://github.com/Wendel-Costa"
-            target="_blank"
-            rel="noopener noreferrer"
-        >
+        <a href="https://github.com/Wendel-Costa" target="_blank" rel="noopener noreferrer">
             Sintetiza Hub &copy; 2026 - Feito por Wendel Costa
         </a>
     </footer>
 
 </body>
+
 </html>
