@@ -35,12 +35,12 @@ sintetiza-hub/
 │   └── gemini.js
 ├── server/
 │   └── gemini-service.js
-├── data/
-│   └── usage.json
+├── docs/
+│   ├── network-request.png
+│   └── Proposta do app.pdf
 ├── index.html
 ├── server.js
 ├── config.example.js
-├── config.js
 └── .gitignore
 ```
 
@@ -89,6 +89,14 @@ http://localhost:3000
 
 No GitHub Codespaces, acesse a aplicação pela porta 3000 na aba Ports.
 
+
+## Evidência de funcionamento — Aba Rede
+
+A captura abaixo demonstra uma solicitação realizada pelo navegador ao backend do Sintetiza Hub. A requisição utiliza o método POST para enviar o texto e as configurações do resumo, recebendo como resposta o resultado gerado pela aplicação.
+
+![Requisição do Sintetiza Hub na aba Network](docs/network-request.png)
+
+
 ## Controle de utilização
 
 O servidor possui limites para reduzir o consumo indevido da API:
@@ -102,6 +110,32 @@ O servidor possui limites para reduzir o consumo indevido da API:
 Os limites podem ser ajustados diretamente no arquivo `server.js`.
 
 Além disso, a utilização está sujeita às cotas e condições estabelecidas pelo Google Gemini.
+
+## Uso de inteligência artificial
+
+O projeto utiliza inteligência artificial em duas etapas:
+
+**1. Funcionamento da aplicação**
+
+A API Google Gemini é utilizada para analisar os textos enviados pelo usuário e gerar resumos personalizados, conforme o tamanho e o formato selecionados.
+
+**2. Desenvolvimento do projeto**
+
+O ChatGPT foi utilizado como ferramenta de apoio durante o desenvolvimento, auxiliando no planejamento da estrutura do projeto, implementação de funcionalidades, integração com a API Gemini, identificação de erros e melhorias no código.
+
+As sugestões foram analisadas, adaptadas ao projeto e testadas no GitHub Codespaces. Foram realizados ajustes na interface, nas instruções de geração dos resumos, na apresentação do resultado e no controle de utilização da API.
+
+
+## Plano B — Indisponibilidade da API
+
+Caso o serviço Google Gemini esteja temporariamente indisponível, a aplicação utiliza uma resposta alternativa previamente armazenada no arquivo `server/fallback-summary.js`.
+
+Essa resposta informa ao usuário que não foi possível processar o texto e orienta que tente novamente posteriormente.
+
+O mecanismo é acionado automaticamente em situações como falhas de conexão, indisponibilidade do serviço e limites temporários da API.
+
+A resposta alternativa é apenas uma mensagem de demonstração e não representa um resumo real do texto enviado.
+
 
 ## Segurança
 

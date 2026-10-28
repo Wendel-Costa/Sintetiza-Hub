@@ -5,6 +5,7 @@ const crypto = require("node:crypto");
 
 const { GEMINI_API_KEY } = require("./config");
 const { summarizeWithGemini } = require("./server/gemini-service");
+const { FALLBACK_SUMMARY } = require("./server/fallback-summary");
 
 const PORT = Number(process.env.PORT) || 3000;
 
@@ -272,21 +273,16 @@ async function handleSummarize(req, res) {
             });
         }
 
-        if (error.status === 429) {
-            return sendJson(res, 503, {
-                message: "O Gemini atingiu seu limite de solicitações. Tente novamente mais tarde."
-            });
-        }
+        const shouldUseFallback =
+            !Number.isInteger(error.status) ||
+            error.status === 429 ||
+            (error.status >= 500 && error.status <= 599);
 
-        if (error.status === 503) {
-            return sendJson(res, 503, {
-                message: "O Gemini está com alta demanda no momento. Tente novamente em alguns instantes."
-            });
-        }
+        if (shouldUseFallback) {
+            console.warn("Utilizando resposta alternativa (Plano B).");
 
-        if (error.status === 504) {
-            return sendJson(res, 504, {
-                message: "O Gemini demorou demais para responder. Tente novamente."
+            return sendJson(res, 200, {
+                summary: FALLBACK_SUMMARY
             });
         }
 
@@ -294,6 +290,7 @@ async function handleSummarize(req, res) {
             message: "Não foi possível gerar o resumo. Consulte o terminal do servidor para identificar o erro."
         });
     }
+
 }
 
 const mimeTypes = {
