@@ -9,12 +9,36 @@ const summaryButton = document.querySelector("#summarize-button");
 const summaryText = document.querySelector("#summary-text");
 const resultPlaceholder = document.querySelector("#result-placeholder");
 const placeholderMessage = resultPlaceholder.querySelector("p");
+const resultActions = document.querySelector("#result-actions");
+const copySummaryButton = document.querySelector("#copy-summary-button");
 
 const optionInputs = document.querySelectorAll(
     'input[name="summary-length"], input[name="summary-format"]'
 );
 
 const initialPlaceholder = placeholderMessage.textContent;
+
+async function copySummary() {
+    const content = summaryText.innerText.trim();
+
+    if (!content) return;
+
+    try {
+        await navigator.clipboard.writeText(content);
+
+        copySummaryButton.textContent = "Copiado!";
+
+        setTimeout(() => {
+            copySummaryButton.textContent = "Copiar resumo";
+        }, 1800);
+
+    } catch {
+        showStatus("Não foi possível copiar o resumo automaticamente.", true);
+    }
+}
+
+copySummaryButton.addEventListener("click", copySummary);
+
 
 function updateCharacterCount() {
     characterCount.textContent = sourceText.value.length.toLocaleString("pt-BR");
@@ -226,9 +250,9 @@ summaryForm.addEventListener("submit", async (event) => {
     setLoading(true);
 
     summaryText.hidden = true;
+    resultActions.hidden = true;
     resultPlaceholder.hidden = false;
     placeholderMessage.textContent = "Gerando seu resumo...";
-
     showStatus("Processando solicitação...");
 
     try {
@@ -241,6 +265,7 @@ summaryForm.addEventListener("submit", async (event) => {
 
         summaryText.hidden = false;
         resultPlaceholder.hidden = true;
+        resultActions.hidden = false;
 
         showStatus("");
 
