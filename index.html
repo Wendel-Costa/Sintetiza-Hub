@@ -7,223 +7,167 @@
 
     <meta
         name="description"
-        content="Transforme textos extensos em resumos objetivos com o Sintetiza Hub."
+        content="Sintetiza Hub: resumos personalizados com inteligência artificial."
     >
 
-    <title>Sintetiza Hub | Resumidor Inteligente</title>
+    <title>Sintetiza Hub</title>
 
     <link rel="stylesheet" href="css/styles.css">
     <script src="js/app.js" defer></script>
 </head>
 <body>
 
-    <div class="background-motto" aria-hidden="true">
-        per aspera ad astra
-    </div>
-
     <header class="site-header">
         <a href="index.html" class="brand" aria-label="Sintetiza Hub - início">
-            <span class="brand-mark">SH</span>
-            <span class="brand-name">Sintetiza <strong>Hub</strong></span>
+            <span class="brand-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none">
+                    <path
+                        d="M12 2.8L14.1 9.9L21.2 12L14.1 14.1L12 21.2L9.9 14.1L2.8 12L9.9 9.9L12 2.8Z"
+                        stroke="currentColor"
+                        stroke-width="1.6"
+                        stroke-linejoin="round"
+                    />
+                    <path
+                        d="M19 15.5L19.8 18.2L22.5 19L19.8 19.8L19 22.5L18.2 19.8L15.5 19L18.2 18.2L19 15.5Z"
+                        fill="currentColor"
+                    />
+                </svg>
+            </span>
+
+            <span class="brand-name">sintetiza <strong>hub</strong></span>
         </a>
 
-        <p class="header-note">Resumos com inteligência artificial</p>
+        <span class="header-motto">per aspera ad astra</span>
     </header>
 
     <main class="container">
 
-        <section class="intro" aria-labelledby="page-title">
+        <div class="workspace">
 
-            <p class="eyebrow">RESUMIDOR INTELIGENTE</p>
+            <section class="panel input-panel" aria-labelledby="input-title">
 
-            <h1 id="page-title">
-                Transforme textos longos em
-                <span>ideias essenciais.</span>
-            </h1>
-
-            <p class="intro-description">
-                Cole seu texto, escolha como deseja resumir
-                e deixe a inteligência artificial identificar
-                os pontos mais importantes.
-            </p>
-
-        </section>
-
-        <section class="app-panel" aria-label="Resumidor de texto">
-
-            <form id="summary-form">
-
-                <div class="section-heading">
-                    <div>
-                        <h2>Texto original</h2>
-                        <p>Cole abaixo o conteúdo que deseja resumir.</p>
-                    </div>
-
-                    <span class="step-label">01 / ENTRADA</span>
-                </div>
-
-                <div class="textarea-wrapper">
-
-                    <label for="source-text" class="sr-only">
-                        Texto que deseja resumir
-                    </label>
-
-                    <textarea
-                        id="source-text"
-                        name="source-text"
-                        rows="10"
-                        maxlength="10000"
-                        placeholder="Comece colando seu texto aqui..."
-                    ></textarea>
-
-                </div>
-
-                <div class="field-footer">
-                    <p>Insira um texto de até 10.000 caracteres.</p>
-
-                    <p class="character-count">
-                        <span id="character-count">0</span>
-                        / 10.000 caracteres
-                    </p>
-                </div>
-
-                <section class="options-section" aria-label="Personalização do resumo">
+                <form id="summary-form">
 
                     <div class="section-heading">
-                        <div>
-                            <h2>Personalize seu resumo</h2>
-                            <p>Escolha como deseja receber o resultado.</p>
-                        </div>
-
-                        <span class="step-label">CONFIGURAÇÕES</span>
+                        <h1 id="input-title">Texto de entrada</h1>
+                        <span class="step-label">01 / ENTRADA</span>
                     </div>
 
-                    <fieldset class="option-group">
-                        <legend>Tamanho do resumo</legend>
+                    <div class="textarea-wrapper">
+                        <label for="source-text" class="sr-only">
+                            Texto que deseja resumir
+                        </label>
 
-                        <div class="choice-grid">
+                        <textarea
+                            id="source-text"
+                            name="source-text"
+                            rows="10"
+                            maxlength="10000"
+                            placeholder="Cole ou digite seu texto aqui..."
+                            aria-invalid="false"
+                        ></textarea>
+                    </div>
 
-                            <label class="choice-card">
-                                <input
-                                    type="radio"
-                                    name="summary-length"
-                                    value="short"
-                                >
+                    <div class="field-footer">
+                        <p class="character-count">
+                            <span id="character-count">0</span> / 10.000
+                        </p>
+                    </div>
 
-                                <span class="choice-content">
-                                    <span class="choice-title">Curto</span>
-                                    <span class="choice-description">
-                                        Apenas as ideias essenciais.
-                                    </span>
-                                </span>
-                            </label>
+                    <section class="options-section" aria-label="Configurações do resumo">
 
-                            <label class="choice-card">
-                                <input
-                                    type="radio"
-                                    name="summary-length"
-                                    value="medium"
-                                    checked
-                                >
+                        <fieldset class="option-group">
+                            <legend>Tamanho do resumo</legend>
 
-                                <span class="choice-content">
-                                    <span class="choice-title">Médio</span>
-                                    <span class="choice-description">
-                                        Equilíbrio entre síntese e detalhes.
-                                    </span>
-                                </span>
-                            </label>
+                            <div class="choice-grid">
 
-                            <label class="choice-card">
-                                <input
-                                    type="radio"
-                                    name="summary-length"
-                                    value="long"
-                                >
+                                <label class="choice-card">
+                                    <input
+                                        type="radio"
+                                        name="summary-length"
+                                        value="short"
+                                    >
+                                    <span class="choice-content">Curto</span>
+                                </label>
 
-                                <span class="choice-content">
-                                    <span class="choice-title">Detalhado</span>
-                                    <span class="choice-description">
-                                        Mais explicações e informações.
-                                    </span>
-                                </span>
-                            </label>
+                                <label class="choice-card">
+                                    <input
+                                        type="radio"
+                                        name="summary-length"
+                                        value="medium"
+                                        checked
+                                    >
+                                    <span class="choice-content">Médio</span>
+                                </label>
 
-                        </div>
-                    </fieldset>
+                                <label class="choice-card">
+                                    <input
+                                        type="radio"
+                                        name="summary-length"
+                                        value="long"
+                                    >
+                                    <span class="choice-content">Detalhado</span>
+                                </label>
 
-                    <fieldset class="option-group format-group">
-                        <legend>Formato do resumo</legend>
+                            </div>
+                        </fieldset>
 
-                        <div class="format-options">
+                        <fieldset class="option-group format-group">
+                            <legend>Formato</legend>
 
-                            <label class="format-option">
-                                <input
-                                    type="radio"
-                                    name="summary-format"
-                                    value="paragraph"
-                                    checked
-                                >
+                            <div class="format-options">
 
-                                <span class="format-content">
-                                    <span class="format-icon" aria-hidden="true">¶</span>
-                                    <span>Texto corrido</span>
-                                </span>
-                            </label>
+                                <label class="format-option">
+                                    <input
+                                        type="radio"
+                                        name="summary-format"
+                                        value="paragraph"
+                                        checked
+                                    >
+                                    <span class="format-content">Texto corrido</span>
+                                </label>
 
-                            <label class="format-option">
-                                <input
-                                    type="radio"
-                                    name="summary-format"
-                                    value="topics"
-                                >
+                                <label class="format-option">
+                                    <input
+                                        type="radio"
+                                        name="summary-format"
+                                        value="topics"
+                                    >
+                                    <span class="format-content">Tópicos</span>
+                                </label>
 
-                                <span class="format-content">
-                                    <span class="format-icon" aria-hidden="true">☷</span>
-                                    <span>Tópicos</span>
-                                </span>
-                            </label>
+                            </div>
+                        </fieldset>
 
-                        </div>
-                    </fieldset>
+                    </section>
 
-                </section>
+                    <button type="submit" id="summarize-button">
+                        Gerar resumo
+                        <span aria-hidden="true">→</span>
+                    </button>
 
-                <button type="submit" id="summarize-button">
-                    Gerar resumo
-                    <span aria-hidden="true">→</span>
-                </button>
+                    <p
+                        id="status-message"
+                        class="status-message"
+                        role="status"
+                        aria-live="polite"
+                    ></p>
 
-            </form>
+                </form>
 
-            <section class="result-area" aria-labelledby="result-title">
+            </section>
+
+            <section class="panel result-panel" aria-labelledby="result-title">
 
                 <div class="section-heading">
-                    <div>
-                        <h2 id="result-title">Seu resumo</h2>
-                        <p>O resultado da sua solicitação aparecerá aqui.</p>
-                    </div>
-
+                    <h2 id="result-title">Resumo gerado</h2>
                     <span class="step-label">02 / RESULTADO</span>
                 </div>
 
                 <div id="result-placeholder" class="result-placeholder">
-
-                    <span class="placeholder-icon" aria-hidden="true">✦</span>
-
-                    <p>
-                        Seu resumo aparecerá neste espaço
-                        após o processamento.
-                    </p>
-
+                    <span class="placeholder-icon" aria-hidden="true">✳</span>
+                    <p>O resumo aparecerá aqui.</p>
                 </div>
-
-                <p
-                    id="status-message"
-                    class="status-message"
-                    role="status"
-                    aria-live="polite"
-                ></p>
 
                 <p
                     id="summary-text"
@@ -233,7 +177,7 @@
 
             </section>
 
-        </section>
+        </div>
 
     </main>
 
@@ -246,5 +190,6 @@
             Sintetiza Hub &copy; 2026 - Feito por Wendel Costa
         </a>
     </footer>
+
 </body>
 </html>
