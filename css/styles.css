@@ -458,3 +458,8 @@ textarea::placeholder {
         height: 34px;
     }
 }
+
+#summarize-button:disabled {
+    opacity: 0.7;
+    cursor: wait;
+}

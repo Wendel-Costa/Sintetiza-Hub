@@ -1,0 +1,12 @@
+
+# Chaves e configurações locais
+config.js
+js/config.js
+.env
+.env.*
+
+# Controle de utilização
+data/usage.json
+
+# Dependências
+node_modules/
